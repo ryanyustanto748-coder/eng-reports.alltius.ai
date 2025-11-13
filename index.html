@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WARNING "ADULT CONTENT"</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f2f5;
+        }
+        .container {
+            background: #fff;
+            padding: 20px 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        .checkbox-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 20px 0;
+        }
+        #robotCheckbox {
+            margin-right: 10px;
+            width: 20px;
+            height: 20px;
+        }
+        #accessButton {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            background-color: #cccccc;
+            color: #666666;
+        }
+        #accessButton:not(:disabled) {
+            background-color: #4CAF50; /* Warna hijau ketika aktif */
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>WARNING ADULT CONTENT !!! PLEASE VERIFY</h2>
+    <p> ARE YOU 18 YEARS OLD?.</p>
+    
+    <div class="checkbox-container">
+        <input type="checkbox" id="robotCheckbox" onclick="verifyUser()">
+        <label for="robotCheckbox"> I AM 18+</label>
+    </div>
+    
+    <button id="accessButton" disabled onclick="goToSite()">Akses Situs</button>
+</div>
+
+<script>
+    // Fungsi untuk memverifikasi apakah kotak sudah dicentang
+    function verifyUser() {
+        const checkbox = document.getElementById('robotCheckbox');
+        const button = document.getElementById('accessButton');
+        
+        // Jika kotak dicentang, aktifkan tombol. Jika tidak, nonaktifkan.
+        if (checkbox.checked) {
+            button.disabled = false;
+        } else {
+            button.disabled = true;
+        }
+    }
+
+    // Fungsi untuk mengarahkan ke situs tujuan
+    function goToSite() {
+        // Ganti URL 'https://www.google.com' dengan alamat situs tujuan Anda
+        window.location.href = 'https://www.revenuecpmgate.com/nrcpwq66qq?key=f080a3509bced40eb01eb9039b9879fb';
+    }
+</script>
+
+</body>
+</html>
