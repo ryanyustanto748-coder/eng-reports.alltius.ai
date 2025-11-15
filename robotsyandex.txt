@@ -1,0 +1,10 @@
+User-agent: Yandex
+Disallow: /private/
+Disallow: /draft/
+
+User-agent: *
+Disallow: /private/
+Disallow: /draft/
+
+Sitemap: http://www.cdn-videy-co.biz.id/sitemap.xml
+Host: www.cdn-videy-co.biz.id
