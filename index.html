@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Konverter Dolar ke Rupiah (USD ke IDR) - Kalkulator Nilai Tukar Hari Ini</title>
+    <meta name="description" content="Gunakan kalkulator cepat kami untuk mengkonversi Dolar Amerika (USD) ke Rupiah Indonesia (IDR) dengan nilai tukar terbaru.">
+    <style>
+        /* CSS Sederhana untuk Tampilan */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f9;
+        }
+        .converter-container {
+            max-width: 450px;
+            margin: auto;
+            padding: 20px;
+            background: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+        }
+        .input-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input[type="number"] {
+            width: calc(100% - 22px);
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            border: 2px solid #2ecc71;
+            background-color: #e8f8f5;
+            border-radius: 4px;
+            font-size: 1.2em;
+            font-weight: bold;
+            text-align: center;
+            color: #27ae60;
+        }
+        /* Penekanan SEO */
+        .seo-text {
+            margin-top: 30px;
+            font-size: 0.9em;
+            line-height: 1.6;
+            color: #7f8c8d;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="converter-container">
+        <h1>Konverter Dolar Amerika (USD) ke Rupiah Indonesia (IDR)</h1>
+        
+
+        <div class="input-group">
+            <label for="usdAmount">Jumlah Dolar (USD):</label>
+            <input type="number" id="usdAmount" value="1" min="0.01" step="0.01" oninput="convertCurrency()">
+        </div>
+
+        <p style="text-align: center; font-size: 1.5em; font-weight: bold;">&#x2195;</p> <div class="input-group">
+            <label for="idrResult">Hasil Konversi Rupiah (IDR):</label>
+            <input type="text" id="idrResult" value="... rupiah" readonly>
+        </div>
+        
+        <div class="result" id="conversionResult">
+            1 USD = **... IDR**
+        </div>
+
+        <div class="seo-text">
+            <p><strong>Nilai Tukar Saat Ini (Contoh):</strong> 1 USD = <span id="exchangeRateDisplay">16,000</span> IDR. Nilai ini hanya contoh. Untuk transaksi nyata, harap periksa nilai tukar bank resmi atau penyedia layanan keuangan Anda.</p>
+            <p>Dapatkan konversi cepat dan akurat Dolar ke Rupiah. Kami membantu Anda menghitung berapa nilai mata uang Anda untuk keperluan bisnis, traveling, atau investasi. Kalkulator ini diperbarui untuk memberikan perkiraan nilai tukar terkini.</p>
+        </div>
+    </div>
+
+    <script>
+        // Gunakan nilai tukar STATIS sebagai contoh.
+        // Dalam implementasi nyata, Anda harus menggunakan API (misalnya dari Bank Indonesia atau penyedia data finansial)
+        // untuk mendapatkan nilai tukar REAL-TIME yang valid.
+        const EXCHANGE_RATE = 16000; // Contoh: 1 USD = 16.000 IDR
+
+        // Fungsi untuk memformat angka menjadi format Rupiah Indonesia
+        function formatRupiah(number) {
+            return new Intl.NumberFormat('id-ID', {
+                style: 'currency',
+                currency: 'IDR',
+                minimumFractionDigits: 0
+            }).format(number);
+        }
+
+        // Fungsi utama untuk konversi
+        function convertCurrency() {
+            const usdInput = document.getElementById('usdAmount');
+            const idrResultInput = document.getElementById('idrResult');
+            const resultDisplay = document.getElementById('conversionResult');
+            const rateDisplay = document.getElementById('exchangeRateDisplay');
+
+            // Tampilkan nilai tukar statis di teks SEO
+            rateDisplay.textContent = new Intl.NumberFormat('id-ID').format(EXCHANGE_RATE);
+
+            // Ambil nilai dari input USD
+            let usdAmount = parseFloat(usdInput.value);
+
+            // Periksa apakah input valid
+            if (isNaN(usdAmount) || usdAmount <= 0) {
+                idrResultInput.value = 'Masukkan jumlah yang valid';
+                resultDisplay.innerHTML = '1 USD = **' + new Intl.NumberFormat('id-ID').format(EXCHANGE_RATE) + ' IDR**';
+                return;
+            }
+
+            // Lakukan perhitungan konversi
+            const idrAmount = usdAmount * EXCHANGE_RATE;
+
+            // Tampilkan hasil di kolom input
+            idrResultInput.value = formatRupiah(idrAmount);
+
+            // Tampilkan hasil di area hasil yang lebih menonjol
+            resultDisplay.innerHTML = `${new Intl.NumberFormat('id-ID').format(usdAmount)} USD = **${formatRupiah(idrAmount)}**`;
+        }
+
+        // Panggil fungsi saat halaman dimuat untuk menampilkan hasil default (1 USD)
+        document.addEventListener('DOMContentLoaded', convertCurrency);
+    </script>
+
+</body>
+</html>
